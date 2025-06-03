@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   output: 'export',
   images: {
     unoptimized: true,
   },
   basePath: '/biggame_fantasy',
-  trailingSlash: true,
-  distDir: 'out',
 };
 
-module.export
+module.exports = nextConfig;

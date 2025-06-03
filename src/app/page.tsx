@@ -88,6 +88,10 @@ export default function Home() {
     setDraftOrder(order);
     setDrafts(Object.fromEntries(order.map(p => [p, []])));
     setStage('draft');
+    // Clear any existing selections when starting a new draft
+    setSelected({ KC: [], STL: [] });
+    setCurrentPick(0);
+    setLastPick(null);
   };
 
   const handlePlayerSelect = (team: string, player: string) => {
@@ -138,7 +142,14 @@ export default function Home() {
 
   const resetDraft = () => {
     localStorage.removeItem('draftState');
-    window.location.reload();
+    setPlayers(['', '', '', '']);
+    setDraftOrder([]);
+    setStage('setup');
+    setCurrentPick(0);
+    setDrafts({});
+    setSelected({ KC: [], STL: [] });
+    setTempSelection(null);
+    setLastPick(null);
   };
 
   if (stage === 'setup') {

@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+}
+
+.font-pixel {
+  font-family: var(--font-press-start-2p);
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6;
+  }
+  50% {
+    box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6, 0 0 30px #3b82f6;
+  }
+  100% {
+    box-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6;
+  }
+}
+
+.animate-glow {
+  animation: glow 2s infinite;
+}
+
+@keyframes slot-machine {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slot {
+  animation: slot-machine 0.5s ease-out;
+}
+
+/* Retro button styles */
+.retro-button {
+  position: relative;
+  background: #4a90e2;
+  border: 2px solid #2c5282;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-press-start-2p);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.retro-button:hover {
+  background: #357abd;
+  transform: translateY(-2px);
+}
+
+.retro-button:active {
+  transform: translateY(1px);
+}
+
+.retro-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4a90e2, #357abd);
+  z-index: -1;
+  border-radius: 4px;
+}
+
+/* Retro input styles */
+.retro-input {
+  background: rgba(74, 144, 226, 0.1);
+  border: 2px solid #4a90e2;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-press-start-2p);
+  transition: all 0.2s;
+}
+
+.retro-input:focus {
+  outline: none;
+  border-color: #357abd;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+/* Retro card styles */
+.retro-card {
+  background: rgba(74, 144, 226, 0.1);
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.retro-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.2);
+}

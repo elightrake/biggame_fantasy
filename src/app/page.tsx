@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const LINEUPS = {
   KC: [
@@ -27,19 +27,6 @@ const LINEUPS = {
   ]
 };
 
-// Helper function to load state from localStorage
-const loadState = () => {
-  if (typeof window === 'undefined') return null;
-  const savedState = localStorage.getItem('draftState');
-  return savedState ? JSON.parse(savedState) : null;
-};
-
-// Helper function to save state to localStorage
-const saveState = (state: any) => {
-  if (typeof window === 'undefined') return;
-  localStorage.setItem('draftState', JSON.stringify(state));
-};
-
 export default function Home() {
   const [players, setPlayers] = useState(['', '', '', '']);
   const [draftOrder, setDraftOrder] = useState<string[]>([]);
@@ -53,45 +40,12 @@ export default function Home() {
   const [tempSelection, setTempSelection] = useState<{team: string, player: string} | null>(null);
   const [lastPick, setLastPick] = useState<{player: string, drafter: string} | null>(null);
 
-  // Load saved state on component mount
-  useEffect(() => {
-    const savedState = loadState();
-    if (savedState) {
-      setPlayers(savedState.players);
-      setDraftOrder(savedState.draftOrder);
-      setStage(savedState.stage);
-      setCurrentPick(savedState.currentPick);
-      setDrafts(savedState.drafts);
-      setSelected(savedState.selected);
-      setLastPick(savedState.lastPick);
-    }
-  }, []);
-
-  // Save state whenever it changes
-  useEffect(() => {
-    if (stage !== 'setup') {
-      saveState({
-        players,
-        draftOrder,
-        stage,
-        currentPick,
-        drafts,
-        selected,
-        lastPick
-      });
-    }
-  }, [players, draftOrder, stage, currentPick, drafts, selected, lastPick]);
-
   const startDraft = () => {
     if (players.some(p => !p.trim())) return;
     const order = [...players].sort(() => Math.random() - 0.5);
     setDraftOrder(order);
     setDrafts(Object.fromEntries(order.map(p => [p, []])));
     setStage('draft');
-    // Clear any existing selections when starting a new draft
-    setSelected({ KC: [], STL: [] });
-    setCurrentPick(0);
-    setLastPick(null);
   };
 
   const handlePlayerSelect = (team: string, player: string) => {
@@ -138,18 +92,6 @@ export default function Home() {
 
   const cancelSelection = () => {
     setTempSelection(null);
-  };
-
-  const resetDraft = () => {
-    localStorage.removeItem('draftState');
-    setPlayers(['', '', '', '']);
-    setDraftOrder([]);
-    setStage('setup');
-    setCurrentPick(0);
-    setDrafts({});
-    setSelected({ KC: [], STL: [] });
-    setTempSelection(null);
-    setLastPick(null);
   };
 
   if (stage === 'setup') {
@@ -220,7 +162,7 @@ export default function Home() {
             </div>
             <button
               className="w-full p-4 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition-colors"
-              onClick={resetDraft}
+              onClick={() => window.location.reload()}
             >
               Start New Draft
             </button>
@@ -343,7 +285,7 @@ export default function Home() {
 
         <button
           className="w-full mt-8 p-4 bg-red-500 hover:bg-red-600 text-white font-bold rounded-lg transition-colors"
-          onClick={resetDraft}
+          onClick={() => window.location.reload()}
         >
           Start Over
         </button>

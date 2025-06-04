@@ -3,27 +3,27 @@
 import { useState } from 'react';
 
 const LINEUPS = {
-  KC: [
-    "Jonathan India (R) 2B",
-    "Bobby Witt Jr. (R) SS",
-    "Maikel Garcia (R) 3B",
-    "Vinnie Pasquantino (L) 1B",
-    "Salvador Perez (R) C",
-    "Jac Caglianone (L) DH",
-    "Nick Loftin (R) LF",
-    "Drew Waters (S) RF",
-    "Kyle Isbel (L) CF"
+  NYM: [
+    "Francisco Lindor (S) SS",
+    "Starling Marte (R) DH",
+    "Juan Soto (L) RF",
+    "Pete Alonso (R) 1B",
+    "Brandon Nimmo (L) LF",
+    "Tyrone Taylor (R) CF",
+    "Ronny Mauricio (S) 3B",
+    "Francisco Alvarez (R) C",
+    "Jeff McNeil (L) 2B"
   ],
-  STL: [
-    "Lars Nootbaar (L) LF",
-    "Masyn Winn (R) SS",
-    "Brendan Donovan (L) 2B",
-    "Willson Contreras (R) 1B",
-    "Iván Herrera (R) C",
-    "Nolan Arenado (R) 3B",
-    "Alec Burleson (L) RF",
-    "Nolan Gorman (L) DH",
-    "Victor Scott II (L) CF"
+  LAD: [
+    "Shohei Ohtani (L) DH",
+    "Mookie Betts (R) SS",
+    "Freddie Freeman (L) 1B",
+    "Teoscar Hernández (R) RF",
+    "Will Smith (R) C",
+    "Max Muncy (L) 3B",
+    "Andy Pages (R) CF",
+    "Michael Conforto (L) LF",
+    "Hyeseong Kim (L) 2B"
   ]
 };
 

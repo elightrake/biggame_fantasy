@@ -9,7 +9,7 @@ const pressStart2P = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "MLB Snake Draft",
+  title: "Big Game Draft",
   description: "A retro-styled snake draft app for MLB players",
 };
 

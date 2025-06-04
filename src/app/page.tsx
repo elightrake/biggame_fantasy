@@ -49,7 +49,7 @@ export default function Home() {
   };
 
   const handlePlayerSelect = (team: string, player: string) => {
-    if (selected[team].includes(player)) return;
+    if (!selected[team] || selected[team].includes(player)) return;
     setTempSelection({ team, player });
   };
 

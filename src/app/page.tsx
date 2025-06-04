@@ -98,9 +98,9 @@ export default function Home() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-blue-900 to-black text-white p-8">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl font-bold mb-8 text-center">MLB Snake Draft</h1>
+          <h1 className="text-4xl font-bold mb-8 text-center">The Big Game Draft!</h1>
           <div className="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-            <h2 className="text-2xl mb-4">Enter Player Names</h2>
+            <h2 className="text-2xl mb-4">Enter Participant Names!</h2>
             {players.map((p, i) => (
               <input
                 key={i}
